@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kr.co.mall4Us.CartDao">
+
+	<select id="getList" parameterType="string" resultType="CartVO">
+		select * from cart where memId=?
+	</select>
+
+
+	<select id="getCart" parameterType="string" resultType="MemberVO">
+		select * from members where memId=#{memId}
+	</select>
+
+	<select id="confirmMember" parameterType="java.util.Map" resultType="MemberVO">
+		select * from members where memId=#{memId} and memPwd=#{memPwd}
+	</select>
+	
+	<insert id="addMember" parameterType="MemberVO" >
+		insert into members 
+			values(#{memId}, #{memName}, #{memPwd}, #{phone}, sysdate) 
+	</insert>
+
+	<delete id="delMember" parameterType="string">
+		delete from members where memId=#{memId}
+	</delete>
+
+</mapper> 
+
