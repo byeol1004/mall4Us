@@ -12,7 +12,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<bean class="com.zaxxer.hikari.HikariConfig" id="hikariConfig" >
+ 	<bean class="com.zaxxer.hikari.HikariConfig" id="hikariConfig" >
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
 		<property name="username" value="byeol" />
@@ -22,6 +22,23 @@
 	<bean class="com.zaxxer.hikari.HikariDataSource" id="dataSource" destroy-method="close">
 		<constructor-arg ref="hikariConfig"></constructor-arg>
 	</bean>
+	
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mapper/voConfig.xml" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:mapper/memberMapper.xml</value>
+				<!-- 아래 추가▼ -->
+				
+			</list>
+		</property>
+	</bean>
+	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
+		<constructor-arg ref="sqlSessionFactoryBean" />
+	</bean>
+	
+	<context:component-scan base-package="kr.co.mall4Us" />
 	
 	
 	
