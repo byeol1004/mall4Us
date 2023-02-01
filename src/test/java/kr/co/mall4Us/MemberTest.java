@@ -49,12 +49,12 @@ public class MemberTest {
 	@Test
 	public void addMemberTest() {
 		MemberVO vo = new MemberVO();
-		vo.setMemId("dongwond");
-		vo.setMemName("강동원");
-		vo.setMemPwd("dongwond");
-		vo.setMemLivingArea("부산시");
-		vo.setMemAddress("부산광역시 서구");
-		vo.setMemPhone("01022221111");
+		vo.setMemId("onlyone726");
+		vo.setMemName("kks");
+		vo.setMemPwd("onlyone726");
+		vo.setMemLivingArea("경기도");
+		vo.setMemAddress("경기도 광주시");
+		vo.setMemPhone("01078781010");
 		int result = service.addMember(vo);
 		assertEquals(result, 1);
 	}

@@ -7,5 +7,9 @@
 	<typeAliases>
 		<typeAlias type="kr.co.mall4Us.vo.MemberVO" alias="MemberVO"/>
 		<typeAlias type="kr.co.mall4Us.vo.CartVO" alias="CartVO"/>
+		<typeAlias type="kr.co.mall4Us.vo.ProductsVO" alias="ProductsVO"/>
+		<typeAlias type="kr.co.mall4Us.vo.InventoryVO" alias="InventoryVO"/>
+		<typeAlias type="kr.co.mall4Us.vo.ReviewVO" alias="ReviewVO"/>
+		<typeAlias type="kr.co.mall4Us.vo.CouponVO" alias="CouponVO"/>
 	</typeAliases>
 </configuration>

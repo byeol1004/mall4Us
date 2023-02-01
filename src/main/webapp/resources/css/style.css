@@ -67,7 +67,7 @@
 		  float: right;
 		  font-size: 28px;
 		  font-weight: bold;
-		  margin-top: -80px;
+		  margin-top: -25px;
 		}
 		
 		.close:hover,
@@ -92,20 +92,11 @@
 	  }
 			
 
-
-
-
-
-
-
-
-
-
 .banner{
 	text-align: center;
 	width : 100%;
 	height : 700px;
-	border : 1px solid black;
+ 	border : 1px solid black; 
 	background-repeat: no-repeat;
 	background-position: center;
 	display: flex;
@@ -120,34 +111,41 @@
 	height : 600px;
 /* 	border : 1px solid black; */
 	display : inline-block;
-	margin : 30px;
+	margin : 75px 30px 30px 30px;
 	background-position: center;
+	
 
 }
 
-
-footer {
-margin: 50px;
-font-family: "Roboto", sans-serif;
+.footer {
+	margin: 50px; 
+	font-family: "Roboto", sans-serif; 
 }
 
-/* .only-pc{
-	display: flex;
-} */
 
+
+ .footerch{
+	height: 130px;
+	margin-top: 30px;
+} 
 .company{
+
 	float: left;
 	width: 760px; 
 }
 
 
 
-body {
+
+
+.flexheader {
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   background-color: #fff;
   height: 200vh;
-  position: relative; }
-  body:before {
+  position: relative; 
+/*   display: flex; */
+  }
+  .flexheader:before {
     content: "";
     position: absolute;
     top: 0;
@@ -161,7 +159,7 @@ body {
     opacity: 0;
     visibility: hidden;
     z-index: 1; }
-  body.offcanvas-menu:before {
+  .flexheader.offcanvas-menu:before {
     opacity: 1;
     visibility: visible; }
 
@@ -185,7 +183,9 @@ a {
   width: 100%;
   background-size: cover;
   background-position: center center;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat; 
+  background-color: black;
+  }
 
 .site-navbar {
   margin-bottom: 0px;
@@ -469,3 +469,8 @@ a {
         width: auto; }
         .site-mobile-menu .site-nav-wrap[data-class="social"] > li:first-child a {
           padding-left: 15px !important; }
+
+          
+
+         
+

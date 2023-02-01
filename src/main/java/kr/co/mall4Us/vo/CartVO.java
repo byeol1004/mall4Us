@@ -15,8 +15,9 @@ public class CartVO {
 	@NonNull
 	private long prodId;
 	@NonNull
-	private String size;
+	private String psize;
 	@NonNull
+	private int quantity;
 	private int status;
 	private String cartDate;
 }

@@ -5,20 +5,39 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<h1>Write a Review</h1>
-리뷰작성
+<title>Mall4Us WebSite</title>
+<style>
 
-<form action="/myPage/reviewList" method="post">
-Title : <input type="text" name="title"><br />
-Content : <textarea rows="20" cols="50" name="content"></textarea><br />
-Add file : <input type="file" name="file"><br />
+.con2{ 
+margin: 50px;
+
+}
+</style>
+</head>
+<header>
+<%@ include file="/WEB-INF/views/include/header.jsp"%>
+</header>
+<body>
+
+<!-- 리뷰작성 -->
+<div class="con1">
+<div class="con2">
+<h3>Write a Review</h3>
+<form action="/myPage/reviewWrite" >
+rating : <input type="text" name="rating" value="평점을 입력해주세요 :)"><br />
+Content : <textarea rows="20" cols="50" name="contents"></textarea><input type="text" style="visibility: hidden;" name="memId" value="${vo.memId }"/><input type="number" style="visibility: hidden;" name="prodId" value="${prodId}"/><br />
+Add file : <input type="file" name="photo"><br />
 <input type="submit" value="submit"/>
 <input type="reset" value="reset"/>
-
-
 </form>
+</div>
+</div>
+<footer>
+<%@ include file="/WEB-INF/views/include/footer.jsp"%>
+</footer>
+<script>
+
+console.log('@@@@@'+'${prodId}');
+</script>
 </body>
 </html>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kr.co.mall4Us.InquiryDao">
+
+	<select id="viewInventory" resultType="map" >
+		select p.prodId, p.prodName, p.prodPrice, p.prodThumImage, p.prodDetailImage, i.sizeS, i.sizeM, i.sizeL 
+		from products p, inventory i 
+		where p.prodId = i.prodId
+	</select>
+	
+	<select id="dynamicInventory" parameterType="map" resultType="ProductsVO" >
+		select * from products
+		
+		<where>
+			<if test="prodHiClass != null">
+			and prodHiClass = #{prodHiClass}
+			</if>
+			<if test="prodMiClass != null">
+			and prodMiClass = #{prodMiClass}
+			</if>
+			<if test="prodLoClass != null">
+			and prodLoClass = #{prodLoClass}
+			</if>
+		
+		</where>
+	</select>
+
+	<select id="productsSearchByPriceAsc" parameterType="map" resultType="ProductsVO" >
+		select * from products
+		
+		<where>
+			<if test="prodHiClass != null">
+			and prodHiClass = #{prodHiClass}
+			</if>
+			<if test="prodMiClass != null">
+			and prodMiClass = #{prodMiClass}
+			</if>
+			<if test="prodLoClass != null">
+			and prodLoClass = #{prodLoClass}
+			</if>
+		
+		</where>
+			order by prodPrice    
+	</select>
+
+	<select id="productsSearchByPriceDesc" parameterType="map" resultType="ProductsVO" >
+		select * from products
+		
+		<where>
+			<if test="prodHiClass != null">
+			and prodHiClass = #{prodHiClass}
+			</if>
+			<if test="prodMiClass != null">
+			and prodMiClass = #{prodMiClass}
+			</if>
+			<if test="prodLoClass != null">
+			and prodLoClass = #{prodLoClass}
+			</if>
+		
+		</where>
+			order by prodPrice desc   
+	</select>
+
+
+	<select id="dynamicInventorySearch" parameterType="map" resultType="map">
+		select p.prodId, p.prodName, p.prodPrice, p.prodThumImage, p.prodHiClass, p.prodMiClass, p.prodLoClass,
+			   i.sizeS, i.sizeM, i.sizeL
+		from inventory i, 
+	   		(select * from products 
+		     		<where>
+						<if test="prodHiClass != null">
+						and prodHiClass = #{prodHiClass}
+						</if>
+						<if test="prodMiClass != null">
+						and prodMiClass = #{prodMiClass}
+						</if>
+						<if test="prodLoClass != null">
+						and prodLoClass = #{prodLoClass}
+						</if>
+					</where>
+		    ) p 
+		where i.prodId = p.prodId
+		order by i.prodId    
+	</select>
+
+	<select id="dynamicInventorySearchByPriceAsc" parameterType="map" resultType="map">
+		select p.prodId, p.prodName, p.prodPrice, p.prodThumImage, p.prodHiClass, p.prodMiClass, p.prodLoClass,
+			   i.sizeS, i.sizeM, i.sizeL
+		from inventory i, 
+	   		(select * from products 
+		     		<where>
+						<if test="prodHiClass != null">
+						and prodHiClass = #{prodHiClass}
+						</if>
+						<if test="prodMiClass != null">
+						and prodMiClass = #{prodMiClass}
+						</if>
+						<if test="prodLoClass != null">
+						and prodLoClass = #{prodLoClass}
+						</if>
+					</where>
+		    ) p 
+		where i.prodId = p.prodId
+		order by p.prodPrice    
+	</select>
+
+	<select id="dynamicInventorySearchByPriceDesc" parameterType="map" resultType="map">
+		select p.prodId, p.prodName, p.prodPrice, p.prodThumImage, p.prodHiClass, p.prodMiClass, p.prodLoClass,
+			   i.sizeS, i.sizeM, i.sizeL
+		from inventory i, 
+	   		(select * from products 
+		     		<where>
+						<if test="prodHiClass != null">
+						and prodHiClass = #{prodHiClass}
+						</if>
+						<if test="prodMiClass != null">
+						and prodMiClass = #{prodMiClass}
+						</if>
+						<if test="prodLoClass != null">
+						and prodLoClass = #{prodLoClass}
+						</if>
+					</where>
+		    ) p 
+		where i.prodId = p.prodId
+		order by p.prodPrice desc   
+	</select>
+
+   <select id="productList" parameterType="map" resultType="ProductsVO">
+   	select * from products
+   	where prodHiClass = #{prodHiClass} and
+   	      prodMiClass = #{prodMiClass} and
+   	      prodLoClass = #{prodLoClass}     
+   </select>
+
+	<select id="soldProductsAsc" resultType="map">
+		select p.prodId, p.prodName, p.prodPrice, p.prodThumImage, p.prodHiClass, p.prodMiClass, p.prodLoClass,
+					 c.psize, c.quantity, c.cartDate
+	  from products p, cart c
+	  where p.prodId = c.prodId			
+	  order by p.prodId	  	
+	</select>
+
+	<select id="soldProducts" resultType="map">
+		select p.prodId, p.prodName, p.prodPrice, p.prodThumImage, p.prodHiClass, p.prodMiClass, p.prodLoClass,
+					 c.psize, c.quantity, c.cartDate
+	  from products p, cart c
+	  where p.prodId = c.prodId			
+	  order by p.prodId	desc  	
+	</select>
+
+	<select id="soldProductsByPrice" resultType="map">
+		select p.prodId, p.prodName, p.prodPrice, p.prodThumImage, p.prodHiClass, p.prodMiClass, p.prodLoClass,
+					 c.psize, c.quantity, c.cartDate
+	  from products p, cart c
+	  where p.prodId = c.prodId			
+	  order by p.prodPrice desc	  	
+	</select>
+
+	<select id="soldProductsByPriceAsc" resultType="map">
+		select p.prodId, p.prodName, p.prodPrice, p.prodThumImage, p.prodHiClass, p.prodMiClass, p.prodLoClass,
+					 c.psize, c.quantity, c.cartDate
+	  from products p, cart c
+	  where p.prodId = c.prodId			
+	  order by p.prodPrice 	
+	</select>
+
+	<select id="soldProductsByDateAsc" resultType="map">
+		select p.prodId, p.prodName, p.prodPrice, p.prodThumImage, p.prodHiClass, p.prodMiClass, p.prodLoClass,
+					 c.psize, c.quantity, c.cartDate
+	  from products p, cart c
+	  where p.prodId = c.prodId			
+	  order by c.cartDate  	
+	</select>
+
+	<select id="soldProductsByDate" resultType="map">
+		select p.prodId, p.prodName, p.prodPrice, p.prodThumImage, p.prodHiClass, p.prodMiClass, p.prodLoClass,
+					 c.psize, c.quantity, c.cartDate
+	  from products p, cart c
+	  where p.prodId = c.prodId			
+	  order by c.cartDate desc 	
+	</select>
+
+	<select id="soldProductsByClass" resultType="map">
+		select p.prodId, p.prodName, p.prodPrice, p.prodThumImage, p.prodHiClass, p.prodMiClass, p.prodLoClass,
+					 c.psize, c.quantity, c.cartDate
+	  from products p, cart c
+	  where p.prodId = c.prodId			
+	  group by p.prodHiClass, p.prodMiClass, p.prodLoClass, p.prodId, 
+	  p.prodName, p.prodPrice, p.prodThumImage, c.psize, c.quantity, c.cartDate	
+  </select>
+
+</mapper> 

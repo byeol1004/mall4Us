@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Mall4Us WebSite</title>
 </head>
 <body>
 <h1>orderList</h1>

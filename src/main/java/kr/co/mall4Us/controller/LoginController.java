@@ -10,8 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.co.mall4Us.service.CouponService;
 import kr.co.mall4Us.service.MemberService;
+import kr.co.mall4Us.vo.CouponVO;
 import kr.co.mall4Us.vo.MemberVO;
 
 @Controller
@@ -21,28 +25,35 @@ public class LoginController {
 	@Autowired
 	MemberService service;
 	
-/*	@RequestMapping("login")
-	public String login() {
-		return "/member/login";
-	}
-*/	
+	@Autowired
+	CouponService cpservice;
+	
 	@RequestMapping("/login")
-	public String login(String memId, String memPwd, Model model, HttpServletRequest request, HttpSession session) {
-
+	public String login(String memId, String memPwd, HttpServletRequest request, HttpSession session, Model model) {
+		  
 		MemberVO vo = service.getOneMember(memId, memPwd);
-
-		if( vo == null) model.addAttribute("message", "로그인에 실패하였습니다!");
+		System.out.println("=&*&^*===vo=="+vo);
 		session.setAttribute("vo", vo);
-		String referer = request.getHeader("Referer");
+//		session.setMaxInactiveInterval(180*60);
+		session.setAttribute("flag", 1);
+		
+		CouponVO coupon = cpservice.getCoupon(memId);
+		session.setAttribute("coupon", coupon);
+		System.out.println("=&*&^*==coupon"+coupon);
+		
+		String referer = request.getHeader("Referer"); // getHeader의 내용을 Referer로 가져와서 redirect로 반환 > 로그인 후 바로 이전페이지로 되돌아가기 
 		return "redirect:"+ referer;
-	
-	
+
 	}
+
+		
+		
 	
 	@RequestMapping("/logout")
 	public String logOut(HttpServletRequest request) {
 		request.getSession().invalidate();
-		return "/home";
+		String referer = request.getHeader("Referer");
+		return "redirect:"+ referer;
 	}
 	@RequestMapping("/loginForm")
 	public String loginForm() {
@@ -52,18 +63,10 @@ public class LoginController {
 	public String loginFail() {
 		return "/login/loginFail";
 	}
-	/*	
-	@GetMapping("/memberJoin") 
-	public String addMemberForm() {
-		return "/member/memberJoin"; 
-	}
-
-	@RequestMapping("/memberJoinProc") 
-	public String addMember(MemberVO vo, Model model, HttpSession session ) {
-		int result = service.addMember(vo);
-		if(result == 1) {
-			session.setAttribute("vo", vo);
-		}
+	
+	
+	@RequestMapping("/home")
+	public String mainhome() {
 		return "home";
-	} */
+	}
 }

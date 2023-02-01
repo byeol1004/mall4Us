@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kr.co.mall4Us.CartDao">
+
+	<select id="getCart" parameterType="string" resultType="CartVO">
+		select * from cart where memId=?
+	</select>
+
+	<insert id="addCart" parameterType="CartVO" >
+		insert into cart 
+			values(cart_seq.nextVal, #{memId}, #{prodId}, #{psize}, #{quantity}, #{status}, sysdate) 
+	</insert>
+
+	<delete id="delCart" parameterType="string">
+		delete from cart where memId=#{memId} and prodId=#{prodId} and status=#{status}
+	</delete>
+
+	<delete id="delCartById" parameterType="int">
+		delete from cart where cartId=#{cartId}
+	</delete>
+
+	<select id="getCartExist" parameterType="map" resultType="CartVO">
+		select * from cart where memId=#{memId} and status=#{status} and prodId=#{prodId} 
+	</select>
+
+	<select id="getProductBySold" resultType="map">
+		select prodId, sum(quantity) as total
+		from cart
+		group by prodId
+		order by total desc
+	</select>
+
+	<select id="getCartListByMemId" parameterType="map" resultType="map">
+		select p.prodThumImage, p.prodName, p.prodPrice, c.cartId, c.psize, c.quantity, c.cartDate, p.prodId
+		from products p, (select * from cart where memId=#{memId} and status=#{status}) c
+		where p.prodId = c.prodId 
+	</select>
+
+	<update id="updateCart" parameterType="map">
+		update cart set quantity=#{quantity}, psize=#{psize} where cartId=#{cartId} 
+	</update>
+
+<!-- 
+	<update id="updateCart" parameterType="map">
+		update cart set cartId=#{cartId}, quantity=#{quantity}, psize=#{psize} where memId=#{memId} and proId=#{prodId} and status=#{status}
+	</update>
+ -->
+	<update id="updateCartStatus" parameterType="map">
+		update cart set status=#{status} where memId=#{memId} and prodId=#{prodId} 
+	</update>
+
+	<update id="updateCartStatusByOne" parameterType="map">
+		update cart set status=1 where memId=#{memId} and status=0 
+	</update>
+	
+	<update id="updateCartStatusOneUsingCartId" parameterType="map">
+		update cart set status=1 where cartId=#{cartId}
+	</update>
+</mapper> 
+

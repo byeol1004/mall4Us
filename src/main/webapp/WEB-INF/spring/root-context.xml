@@ -30,6 +30,12 @@
 			<list>
 				<value>classpath:mapper/memberMapper.xml</value>
 				<!-- 아래 추가▼ -->
+				<value>classpath:mapper/cartMapper.xml</value>
+				<value>classpath:mapper/inquiryMapper.xml</value>
+				<value>classpath:mapper/inventoryMapper.xml</value>
+				<value>classpath:mapper/productsMapper.xml</value>
+				<value>classpath:mapper/reviewMapper.xml</value>
+				<value>classpath:mapper/couponMapper.xml</value> 
 				
 			</list>
 		</property>

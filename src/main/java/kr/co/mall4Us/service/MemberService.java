@@ -9,6 +9,8 @@ public interface MemberService {
 	List<MemberVO> getAllMember();
 
 	MemberVO getOneMember(String memId, String memPwd);
+	
+	MemberVO getOneMember(String memId);
 
 	int addMember(MemberVO vo);
 	
