@@ -106,7 +106,7 @@
 
 					<th>수량</th>
 
-					<c:choose>
+ 					<c:choose>
 						<c:when test="${sort==4}"> 
 							<th class="sort"><a href="/manager/sold?sort=44">판매일자(최근순)</a></th>
 						</c:when>
@@ -116,14 +116,13 @@
 						<c:otherwise>  
 							<th class="sort"><a href="/manager/sold?sort=4">판매일자</a></th>
 						</c:otherwise>
-				  </c:choose>
-
+				  </c:choose> 
 					<th>소계</th>
 					</tr>
 	
 					<c:forEach var="item" items="${list}">
 						<tr class="item">
-					 		<td style="text-align:center"><img src="/resources/thumbImg/${item.PRODTHUMIMAGE}" width="50" alt="" /></td> 
+					 		<td style="text-align:center"><img src="/resources/productImg/thImg/${item.PRODTHUMIMAGE}" width="50" alt="" /></td> 
 							<td>${item.PRODID}</td>
 							<td>${item.PRODNAME}</td>
 							<td>${item.PRODHICLASS}/${item.PRODMICLASS}					
@@ -131,10 +130,24 @@
 									/${item.PRODLOCLASS}
 								</c:if>
 							</td>
-							<td class="price" style="text-align:right">${item.PRODPRICE}</td>
+							<td style="display: none"  class="price" style="text-align:right">${item.PRODPRICE}</td>
+							<td style="text-align:right" >&nbsp;&#8361; <fmt:formatNumber type="number" value="${item.PRODPRICE}" pattern="#,###"/></td>
+							
 	 						<td class="qty" style="text-align:center">${item.QUANTITY}</td>
-	 						<td>${item.CARTDATE}</td>
-							<td class="subtotal" style="text-align:right"></td>
+	 						
+	 						<c:choose>
+		 						<c:when test="${not empty item.CARTDATE}"> 
+			 						<td>${item.CARTDATE}</td> 
+								</c:when>
+	
+								<c:otherwise>
+			 						<td style="text-align:center">-</td> 
+								</c:otherwise>
+							</c:choose>
+	 						
+							<td style="display: none" class="subtotal" style="text-align:right"></td>
+							<td style="text-align:right" class="subtotalView">&nbsp;&#8361; <span></span></td>
+							
 						</tr>
 					</c:forEach>
 				</table>
@@ -161,7 +174,8 @@ $(function() {
         //console.log(subtotal);
 
         $(this).find(".subtotal").text(subtotal);
-        
+        $(this).find(".subtotalView span").text($.numberWithCommas(subtotal));
+
         total += subtotal;
         
         $("#total span").html($.numberWithCommas(total));

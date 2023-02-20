@@ -47,28 +47,44 @@ public class ManagerController {
 	}
 	*/
 	
-	@RequestMapping("/sold")
-	public String sortProducts( @RequestParam(defaultValue="0") int sort, Model model) {
+	  @RequestMapping("/sold")
+	   public String sortProducts( @RequestParam(defaultValue="1") int sort, Model model) {
 
-		List<Map<String, Object>> list = null;
-		
-		if (sort == 1) {
-			list = qservice.soldProducts();
-		}else if (sort == 2) {
-			list = qservice.soldProductsByClass();
-		}else if (sort == 3) {
-			list = qservice.soldProductsByPrice();
-		}else {
-			list = qservice.soldProducts();
-		}
-		
-		model.addAttribute("list", list);
-		
-		return "/prodRegi/productSold";
-		
-	}
+	      List<Map<String, Object>> list = null;
+	      
+	      if (sort == 1) {
+	         list = qservice.soldProducts();
+	      }else if (sort == 11) {
+	         list = qservice.soldProductsAsc();
+	      }else if (sort == 2) {
+	         list = qservice.soldProductsByClass();
+	      }else if (sort == 3) {
+	         list = qservice.soldProductsByPrice();
+	      }else if (sort == 33) {
+	         list = qservice.soldProductsByPriceAsc();
+	      }else if (sort == 4) {
+	         list = qservice.soldProductsByDate();
+	      }else if (sort == 44) {
+	         list = qservice.soldProductsByDateAsc();
+	      }else {
+	         list = qservice.soldProductsAsc();
+	      }
+	      
+	      /*
+	      for(Map<String, Object> item : list) {
+	         System.out.println(item);
+	         
+	      }
+	      */
+	      
+	      model.addAttribute("list", list);
+	      model.addAttribute("sort", sort);
+	      
+	      return "/prodRegi/productSold";
+	      
+	   }
 	
-	@RequestMapping("/delete")
+/*	@RequestMapping("/delete")
 	public String delete(String cartId, String quantity, HttpServletRequest request, Model model) {
 		
 		System.out.println("여기왔어요");
@@ -81,7 +97,7 @@ public class ManagerController {
 		String referer = request.getHeader("Referer");
 		return  "redirect:"+ referer;
 		
-	}
+	}*/
 
 	
 	@RequestMapping("/1234")

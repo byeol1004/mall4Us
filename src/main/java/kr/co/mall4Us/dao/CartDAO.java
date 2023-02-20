@@ -27,5 +27,7 @@ public interface CartDAO {
 
 	int updateCartStatusOneUsingCartId(long cartId);
 
+	Map<String, Object> getProductInCartByCartId(long cartId);
+
 
 }

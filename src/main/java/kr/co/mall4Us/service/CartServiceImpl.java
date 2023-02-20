@@ -73,6 +73,11 @@ public class CartServiceImpl implements CartService{
 		return dao.updateCartStatusOneUsingCartId(cartId);
 	}
 
+	@Override
+	public Map<String, Object> getProductInCartByCartId(long cartId) {
+		return dao.getProductInCartByCartId(cartId);
+	}
+
 
 
 }

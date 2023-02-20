@@ -58,7 +58,7 @@ table th, td{
 	 <div class="msg"><h1>주문이 완료되었습니다.</h1></div><br />
 		<h3>My Order</h3>
 		<table class="table">
-			<c:forEach var="item" items="${list}">
+			<c:forEach var="item" items="${cartSelectList}">
 			<tr style="background-color: black; color: white;"><th>상품</th> <th>상품정보</th> <th>수량</th> <th>주문번호</th> <th>진행상태</th></tr>
 			
 			<tr><td><a href="/products/detail?prodId=${item.PRODID}"><img src="/resources/productImg/thImg/${item.PRODTHUMIMAGE }" width="100" height="100"/></a></td> <td><a class="prodName" href="/products/detail?prodId=${item.PRODID}" >${item.PRODNAME}</a><br /> ${item.PSIZE} <br />${item.PRODPRICE}</td> <td>${item.QUANTITY}</td><td class="contents">${item.CARTID}</td> <td>결제완료</td> </tr>

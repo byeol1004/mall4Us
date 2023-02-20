@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.mall4Us.service.CartService;
 import kr.co.mall4Us.service.CouponService;
@@ -53,12 +54,52 @@ public class MyPageController {
 	@Autowired
 	CouponService cpservice;
 	
+	@RequestMapping("/idCheck")
+	@ResponseBody
+	public String idCheck(String memId){
+
+		if (memId == ""){
+			return "fail";
+		}
+
+		MemberVO vo = service.getOneMember(memId);
+		
+		if (vo != null ) {
+			return "fail";	
+		}
+		
+		return "success";
+	}	
+	
+	
 	@RequestMapping("/memberJoinProc") 
 	public String addMember(String memId, MemberVO vo, Model model, HttpSession session, HttpServletRequest request) {
 
 //		CouponVO coupon = cpservice.getCoupon(memId);
 //		session.setAttribute("coupon", coupon);
+
 		
+		MemberVO vo1 = service.getOneMember(vo.getMemId());
+		
+		model.addAttribute("join", 0);
+		
+		if (vo1 != null ) {
+			
+			
+		}else {
+			int result = service.addMember(vo);
+			if(result == 1) {
+				session.setAttribute("vo", vo);
+				cpservice.initCoupon(vo.getMemId());
+				
+				
+				model.addAttribute("join", 1);
+			}
+			
+			
+		}
+		System.out.println("중복안됨"+model.getAttribute("join"));
+	/*	
 		int result = service.addMember(vo);
 		if(result == 1) {
 			session.setAttribute("vo", vo);
@@ -66,6 +107,8 @@ public class MyPageController {
 				cpservice.initCoupon(vo.getMemId());
 			}
 		}
+		
+	*/
 //		String referer = request.getHeader("Referer"); // getHeader의 내용을 Referer로 가져와서 redirect로 반환 > 로그인 후 바로 이전페이지로 되돌아가기 
 //		return "redirect:"+ referer;
 		return "home";

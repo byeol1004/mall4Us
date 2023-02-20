@@ -22,7 +22,7 @@
 button#totalCal{
 	width: 200px; 
 }
-.payment{
+#selectSubmit{
 	float: right;
 }
 
@@ -92,7 +92,8 @@ button#totalCal{
 		
 						</table>
 						total: &#8361;&nbsp;<span id="total"></span>
-						<a href="/products/cartSelect?memId=${vo.memId }" class="payment"><input type="submit" name="cartId" value="결제하기" id="selectSubmit"></a>
+						<button id="selectSubmit" name="cartId" >결제하기</button>
+						
 			</div>
 		</div>
 	</div>
@@ -165,20 +166,20 @@ $(function(){
 
 		console.log('clicked');
 		$.ajax({
-			url : "/products/cartSelect",
+			url : "/products/cartSelect", 
 			type : "POST",
 			data : {
 				values : checkArray,
 				carts : cartArray,
 			},
-			sucess : function(data) {
+			success : function(data) {
 				console.log(data);
 			},
 			error : function(xhr) {
 				console.log(xhr.status);
 			},
 			complete : function() {
-				location.href = '/products/payment?cart=${item.CARTID}';
+				location.href =  '/products/payment?memId=${vo.memId}';
 			}
 		});
 	});

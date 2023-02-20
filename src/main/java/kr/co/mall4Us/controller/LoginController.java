@@ -36,7 +36,7 @@ public class LoginController {
 		session.setAttribute("vo", vo);
 //		session.setMaxInactiveInterval(180*60);
 		session.setAttribute("flag", 1);
-		
+		System.out.println(vo);
 		CouponVO coupon = cpservice.getCoupon(memId);
 		session.setAttribute("coupon", coupon);
 		System.out.println("=&*&^*==coupon"+coupon);
@@ -52,8 +52,9 @@ public class LoginController {
 	@RequestMapping("/logout")
 	public String logOut(HttpServletRequest request) {
 		request.getSession().invalidate();
-		String referer = request.getHeader("Referer");
-		return "redirect:"+ referer;
+//		String referer = request.getHeader("Referer");
+//		System.out.println(referer);		
+		return "redirect:home";
 	}
 	@RequestMapping("/loginForm")
 	public String loginForm() {

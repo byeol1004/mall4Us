@@ -70,5 +70,10 @@ public class CartDAOImpl implements CartDAO{
 		return session.update("kr.co.mall4Us.CartDao.updateCartStatusOneUsingCartId", cartId);
 	}
 
+	@Override
+	public Map<String, Object> getProductInCartByCartId(long cartId) {
+		return session.selectOne("kr.co.mall4Us.CartDao.getProductInCartByCartId", cartId);
+	}
+
 	
 }

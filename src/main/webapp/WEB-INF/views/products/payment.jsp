@@ -119,7 +119,7 @@ footer{
 		<hr />
 
 		<div class="orderprod">
-			<c:forEach var="item" items="${list}">
+			<c:forEach var="item" items="${cartSelectList}">
 				<div class="flex">
 					<div class="img" ><a href="/products/detail?prodId=${item.PRODID}"><img src="/resources/productImg/thImg/${item.PRODTHUMIMAGE}" width="200" height="200" class="Img" /></a></div>
 					<div class="orderInfo">

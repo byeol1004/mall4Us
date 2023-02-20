@@ -87,7 +87,7 @@ width: 50px;
 	<h1>Hello, ${vo.memName }</h1>
 		<li><a href="#myOder">주문내역</a></li>
 		<li><a href="#recentlyViews">최근 본 상품</a></li>
-		<li><a href="#">적립금</a></li>
+		<li><a href="#">포인트</a></li>
 		<li><a href="#">쿠폰</a></li>
 		<li><a href="#">회원등급</a></li>
 		<li><a href="/myPage/memberModify">회원 정보 수정</a></li>
@@ -120,7 +120,7 @@ width: 50px;
 				<tr><td>${coupon.memGrade}</td> <td><fmt:formatNumber type="number" value="${coupon.memAmount}" pattern="#,###"/></td><td><fmt:formatNumber type="number" value="${coupon.memPoint}" pattern="#,###"/></td> <td><c:if test="${coupon.memCoupon!=0}">${coupon.memCoupon}% 쿠폰</c:if></td></tr>
 			</table> --%>
 			<hr />
-			<p>적립금 : <fmt:formatNumber type="number" value="${coupon.memPoint}" pattern="#,###"/></p>
+			<p>포인트 : <fmt:formatNumber type="number" value="${coupon.memPoint}" pattern="#,###"/></p>
 			<p>쿠폰 : <c:if test="${coupon.memCoupon!=0}">${coupon.memCoupon}% 쿠폰</c:if></p>
 	</div>
 </div>
@@ -146,6 +146,7 @@ width: 50px;
 			
 			<tr><td>
 			<div class="recentBox">
+			<p class="msg">${message}</p>
 			<c:forEach var="recentlyViews" items="${recentlyViews}">
 			
 			<div class="recentPd1"><a href="/products/detail?prodId=${recentlyViews.prodId }">

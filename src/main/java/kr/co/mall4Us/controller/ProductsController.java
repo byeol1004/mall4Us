@@ -27,6 +27,7 @@ import kr.co.mall4Us.service.ReviewService;
 import kr.co.mall4Us.vo.CartVO;
 import kr.co.mall4Us.vo.CouponVO;
 import kr.co.mall4Us.vo.InventoryVO;
+import kr.co.mall4Us.vo.MemberVO;
 import kr.co.mall4Us.vo.ProductsVO;
 import kr.co.mall4Us.vo.ReviewVO;
 
@@ -56,7 +57,7 @@ public class ProductsController {
 	CouponService cpservice;
 	
 	
-	//search값 보내기
+	//seach List
 		@RequestMapping("/search")	
 		@ResponseBody
 		public String search(String prodName, Model model, HttpSession session) {	
@@ -68,7 +69,7 @@ public class ProductsController {
 			};
 
 			session.setAttribute("list", list);
-			return "redirect:/products/productSearch";
+			return "";
 		}
 		
 		@RequestMapping("/productSearch")
@@ -98,6 +99,7 @@ public class ProductsController {
 			return "/products/productsList";
 		}
 		
+		//상품정렬
 		@RequestMapping("/sort")
 		@ResponseBody
 		public String sort( HttpSession session, Model model, String sortMethod, String prodHiClass, 
@@ -318,7 +320,7 @@ public class ProductsController {
 		}
 	@RequestMapping("/carts")
 	public String carts(String memId, Model model) {
-		
+			
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("memId", memId);
 		map.put("status", 0);
@@ -332,6 +334,7 @@ public class ProductsController {
 		return "/products/carts";
 	}
 	
+	//장바구니 상품삭제
 	@RequestMapping("/cartsDelete")
 	public String cartsDelete(String memId, long prodId, int cartId, Model model, HttpServletRequest request) {
 		
@@ -349,82 +352,65 @@ public class ProductsController {
 		String referer = request.getHeader("Referer");
 		return "redirect:"+ referer;
 	}
-	
+
+	//장바구니 선택
 	@RequestMapping("/cartSelect")
 	@ResponseBody
-	public String cartSelect(@RequestParam(value="values[]", required=false) String[] values, @RequestParam(value="carts[]", required=false) long[] carts, Model model, HttpSession session) { 
+	public String cartSelect(@RequestParam(required = false, value="values[]") String[] values, 
+							@RequestParam(required = false, value="carts[]") long[] carts,  
+							HttpSession session){ 
 
-		for(int i=0; i<carts.length; i++) {
-			System.out.println("carts" + carts[i] + " " + values[i]);
-			System.out.println(values[i].equals("true"));
-			if(values[i].equals("true")) {
-						
-				int cartSelect = caService.updateCartStatusOneUsingCartId(carts[i]); 
-				
-			}
-		}
+		List<Map<String, Object>> cartSelectList = new ArrayList<Map<String,Object>>();
+		
 
-		session.setAttribute("values",values);
-		session.setAttribute("carts",carts);
-		return "/products/payment";
-	}
+	      for(int i=0; i<carts.length; i++) {
+	            System.out.println("carts" + carts[i] + " " + values[i]);
+	            System.out.println(values[i].equals("true"));
+	             if(values[i].equals("true")){
+	                  Map<String,Object> item = caService.getProductInCartByCartId(carts[i]);
+	                  cartSelectList.add(item);
+	               }
+	      }
+		
+
+		
+	      session.setAttribute("cartSelectList", cartSelectList);
+	      session.setAttribute("values",values);
+	      session.setAttribute("carts",carts);
+	      return "";
+	}//500에러 Request processing failed; nested exception is java.lang.NullPointerException
+	
 	
 	
 	@RequestMapping("/payment")
 	public String payment(Model model, HttpSession session, HttpServletRequest request) {
+		if(session.getAttribute("vo")==null) {		
+			System.out.println("vo가 없음");
+		}
 		
+		MemberVO vo = (MemberVO)session.getAttribute("vo");
+		String memId = vo.getMemId();
 		
-		
-		String values = (String)session.getAttribute("values");
-		long carts = (long)session.getAttribute("carts");
-		
-		String memId = (String)session.getAttribute("memId");
+		System.out.println("memId"+memId);
+				
 		CouponVO coupon = cpservice.getCoupon(memId);
 		session.setAttribute("coupon", coupon);
 //		System.out.println("=&*&^*==coupon"+coupon);
 		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("memId", memId);
-		map.put("status", 0);
-		
-		
-		List<Map<String,Object>> list = caService.getCartListByMemId(map);
-//		System.out.println(list);
-		for(Map<String, Object> vo:list) {
-//		System.out.println(vo);
+		if(session.getAttribute("carts") == null) {
+			System.out.println("carts 거 없음");
+			
 		}
-		model.addAttribute("list", list);
+		
+		long[] carts = (long[])session.getAttribute("carts");
+		String[] values = (String[])session.getAttribute("values");		
+		
 
 		return "/products/payment";
-	} 
+	}
 		
 	
-	
-/*	@RequestMapping("/paymentSuccess")
-	@ResponseBody
-	public String paymentSuccess(String memId, Model model, Long amount) {
-		System.out.println("총금액~"+amount);
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("memId", memId);
-		map.put("status", 0);
-		
-		List<Map<String,Object>> list = caService.getCartListByMemId(map);
-		for(Map<String, Object> vo:list) {
-			System.out.println("@@@@@@@@@@@@@"+vo);
-		}
-		
-		model.addAttribute("list", list);
-		
-		caService.updateCartStatusByOne(memId);
-		
-		return "/products/paymentSuccess";
-	} */
-	
-	
-	
-	
-	
-//total 값 보내기
+//결제 성공페이지에 total 값 보내기
 	@RequestMapping("/paymentProcess")
 	@ResponseBody //자바 객체를 json 기반의 HTTP Body로 변환(데이터만 반환, 데이터를 보내주는 목적)
 	public String paymentProcess(String memId, HttpSession session, Long amount) {
@@ -437,6 +423,7 @@ public class ProductsController {
 	@RequestMapping("paymentSuccess")
 	public String success(String memId, Model model, HttpSession session) {
 		System.out.println("여기로 왔어용!");
+			
 		Long amount = (Long)session.getAttribute("amount");
 		
 		CouponVO coupon = cpservice.getCoupon(memId);
@@ -465,23 +452,23 @@ public class ProductsController {
 		int result = cpservice.updateCoupon(coupon);
 		System.out.println("memPoint"+memPoint);
 			
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("memId", memId);
-		map.put("status", 0);
-
-		List<Map<String,Object>> list = caService.getCartListByMemId(map);
-		for(Map<String, Object> vo:list) {
-//			System.out.println("@@@@@@@@@@@@@"+vo);
+		
+		long[] carts = (long[])session.getAttribute("carts");
+		String[] values = (String[])session.getAttribute("values");
+		
+		
+		for(int i=0; i<carts.length; i++) {
+			if(values[i].equals("true")) {
+						
+				int cartSelect = caService.updateCartStatusOneUsingCartId(carts[i]); 
+//				CartVO cvo= new CartVO();		
+//				caService.updateCartStatusOneUsingCartId(carts[i]); 
+				System.out.println("bbbbb들어왔어요...;bbbbbb");
+			}
 		}
 		
-		model.addAttribute("list", list);
-//		caService.updateCartStatusByOne(memId); 
 
 		return "/products/paymentSuccess"; 
 	}
-	
-	@RequestMapping("/test")
-	public String cartTest() {
-		return "products/test";
-	}
 }
+

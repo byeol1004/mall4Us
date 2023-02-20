@@ -38,6 +38,14 @@
 		from products p, (select * from cart where memId=#{memId} and status=#{status}) c
 		where p.prodId = c.prodId 
 	</select>
+	
+	
+	<select id="getProductInCartByCartId" parameterType="long" resultType="map">
+		select p.prodThumImage, p.prodName, p.prodPrice, c.cartId, c.psize, c.quantity, c.cartDate, p.prodId
+		from products p, (select * from cart where cartId=#{cartId}) c
+		where p.prodId = c.prodId 
+	</select>
+	
 
 	<update id="updateCart" parameterType="map">
 		update cart set quantity=#{quantity}, psize=#{psize} where cartId=#{cartId} 

@@ -27,4 +27,6 @@ public interface CartService {
 
 	int updateCartStatusOneUsingCartId(long cartId);
 
+	Map<String, Object> getProductInCartByCartId(long cartId);
+
 }

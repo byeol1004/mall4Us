@@ -101,7 +101,7 @@ input[type="submit"]{
 
 				<c:forEach var="item" items="${list}">
 					<tr>
-				 		<td><img src="/resources/thumbImg/${item.PRODTHUMIMAGE}" width="50" alt="" /></td> 
+				 		<td><img src="/resources/productImg/thImg/${item.PRODTHUMIMAGE}" width="50" alt="" /></td> 
 						<td>${item.PRODID}</td>
 						<td>${item.PRODNAME}</td>
 						<td style="text-align:right"><fmt:formatNumber type="number" value="${item.PRODPRICE}" pattern="#,###"/></td>

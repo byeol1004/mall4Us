@@ -78,7 +78,7 @@
 											<input type="text" name="memId" id="memId" placeholder="아이디 (8자이상 입력하세요)" pattern=".{8,}" required="required"/>
 											<a class="confirm">중복확인</a> 
 											<input type="text" name="memName" placeholder="성명" autocomplete="name" maxlength="100" pattern="[\p{L} \-\.]+" required /> 
-											<input type="password" name="memPwd" placeholder="비밀번호" /> 
+											<input type="password" name="memPassword" placeholder="비밀번호" /> 
 											<input type="password" name="passwordConfirm" placeholder="비밀번호 확인" /> 
 											<input type="text" name="memLivingArea" placeholder="지역" autocomplete="country" enterkeyhint="done" required /> 
 											<input type="text" name="memAddress" placeholder="주소" autocomplete="address" maxlength="300" required /> 
@@ -103,9 +103,8 @@
 								</div>
 							</div>
 
-							
 
-				<!-- 카테고리 -->             
+							<!-- 카테고리 -->             
                 <li class="has-children" >
                   <a href="/products/productsList"><span>Product</span></a>
                   <ul class="dropdown arrow-top">
@@ -213,91 +212,88 @@ $(function(){
     }
  })
 });
-
-
-   
 </script>
 
 
-
-<script type="text/javascript">
-$('.message a').click(function() {
-	$('form').animate({
-		height : "toggle",
-		opacity : "toggle"
-	}, "slow");
-});
-
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("active");
-btn.onclick = function() {
-	modal.style.display = "block";
-}
-var span = document
-		.getElementsByClassName("close")[0];
-span.onclick = function() {
-	modal.style.display = "none";
-}
-
-$('.register-form').validate({
-    rules: {
-    	memPwd: {
-            required: true,
-            minlength: 5
-        },
-        passwordConfirm: {
-            required: true,
-            minlength: 5,
-            equalTo: '[name="memPwd"]'
-        }
-    },
-    messages : {
-    	memPwd: {
-    		required: "필수 입력 항목입니다.",
-    		minlength : "최소 5글자이상이어야 합니다"
-    	},
-    	passwordConfirm:{
-    		required: "필수 입력 항목입니다.",
-    		minlength : "최소 5글자이상이어야 합니다",
-    		equalTo: '비밀번호가 일치하지 않습니다.',
-    	},
-    } 
-}); 
-
-$('.confirm').click(()=>{
-	console.log('confirm click');	
-	var id = $('#memId').val();
-	$.ajax({
-		url : "/myPage/idCheck",
-		type : "POST", 
-		data: { memId: id }, 
-      success: function(data){
-      	
-      	if(data=='fail'){
-        	alert('입력하신 아이디가 없거나 이미 등록된 아이디입니다');
-      	}else if (data=="success"){
-          	alert('사용하실 수 있는 아이디입니다');
-      	}
-      },
-     error: function(xhr) {
-        console.log(xhr.status);
-      },
-	    complete: function(){
-      }
+<script>
+$(function(){
+	$('.message a').click(function() {
+		$('form').animate({
+			height : "toggle",
+			opacity : "toggle"
+		}, "slow");
+	});
 	
-	});   
-
-})
-
+	var modal = document.getElementById("myModal");
+	var btn = document.getElementById("active");
+	btn.onclick = function() {
+		modal.style.display = "block";
+	}
+	var span = document
+			.getElementsByClassName("close")[0];
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+	
+	$('.register-form').validate({
+	    rules: {
+	    	memPassword: {
+	            required: true,
+	            minlength: 5
+	        },
+	        passwordConfirm: {
+	            required: true,
+	            minlength: 5,
+	            equalTo: '[name="memPassword"]'
+	        }
+	    },
+	    messages : {
+	    	memPassword: {
+	    		minlength : "최소 5글자이상이어야 합니다"
+	    	},
+	    	passwordConfirm:{
+	    		minlength : "최소 5글자이상이어야 합니다",
+	    		equalTo: '비밀번호가 일치하지 않습니다.',
+	    	},
+	    } 
+	}); 
+	
+	$('.confirm').click(()=>{
+		console.log('confirm click');	
+		var id = $('#memId').val();
+		$.ajax({
+			url : "/myPage/idCheck",
+			type : "POST", 
+			data: { memId: id }, 
+	      success: function(data){
+	      	
+	      	if(data=='fail'){
+	        	alert('입력하신 아이디가 없거나 이미 등록된 아이디입니다');
+	      	}else if (data=="success"){
+	          	alert('사용하실 수 있는 아이디입니다');
+	      	}
+	      },
+	     error: function(xhr) {
+	        console.log(xhr.status);
+	      },
+		    complete: function(){
+	      }
+		
+		});   
+	
+	})
+});
 </script>
 
-    <div class="hero" ></div>
 
-    <script src="/resources/js/jquery-3.3.1.min.js"></script>
-    <script src="/resources/js/popper.min.js"></script>
-    <script src="/resources/js/bootstrap.min.js"></script>
-    <script src="/resources/js/jquery.sticky.js"></script>
-    <script src="/resources/js/main.js"></script>
+
+<div class="hero" ></div>
+
+<script src="/resources/js/jquery-3.3.1.min.js"></script>
+<script src="/resources/js/popper.min.js"></script>
+<script src="/resources/js/bootstrap.min.js"></script>
+<script src="/resources/js/jquery.sticky.js"></script>
+<script src="/resources/js/main.js"></script>
    
 </body>
 </html>

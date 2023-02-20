@@ -64,7 +64,7 @@ table th, td{
 	text-align: center; */
 
 	width:1000px;
-    height:500px;
+/*     height:500px; */
     position:relative;
 /*     left:50%; */
 /*     top:50%; */
@@ -112,7 +112,7 @@ table th, td{
 			<form action="/products/carts?memId=${vo.memId }&prodId=${prodInfo.prodId }&psize=psize&quantity=quantity" method="post">
 				<button>장바구니보기</button><br /><br />
 			</form>
-			<a href="/products/payment?memId=${vo.memId }"><button>결제하기</button></a><br />
+			<%-- <a href="/products/payment?memId=${vo.memId }"><button>결제하기</button></a><br /> --%>
 		</c:if>
 		
 		<c:if test="${vo.memId==null }">
