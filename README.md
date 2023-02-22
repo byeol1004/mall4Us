@@ -55,15 +55,14 @@
 ### 메인페이지(회원가입, 로그인)
 https://user-images.githubusercontent.com/121285584/220628423-17fddbe1-2076-456d-8da6-dc08d8e62876.mp4
 
-
-
-
+`ㅇㅇㅇㅇㅇㅇㅇㅇㅇ`
 
 
 ### 상품조회 ~ 카트
 
+https://user-images.githubusercontent.com/121285584/220630037-b42c8051-b368-402e-808f-038d45f7ab01.mp4
 
-[![Video Label](http://img.youtube.com/vi/7Ce096QCC00/0.jpg)](https://youtu.be/7Ce096QCC00)
+`ㅇㅇㅇㅇㅇㅇㅇㅇㅇ`
 
 
 ### 결제
@@ -86,4 +85,7 @@ https://user-images.githubusercontent.com/121285584/220594899-7bdaa98f-8bec-41f7
 
 ### 관리자페이지 > 상품재고, 판매현황 조회
 
-https://drive.google.com/file/d/1dIN2iyfy8ImenvGojTlafKi6ahfdEQXH/view?usp=share_link
+
+https://user-images.githubusercontent.com/121285584/220633136-bcc032c9-ab31-4275-9aea-6ed12d0179ae.mp4
+
+`ㅇㅇㅇㅇㅇㅇㅇㅇㅇ`
