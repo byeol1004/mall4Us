@@ -56,8 +56,12 @@
 [![Video Label](http://img.youtube.com/vi/WO6l6t6wEr4/1.jpg)](https://youtu.be/WO6l6t6wEr4)
 
 
-https://youtu.be/WO6l6t6wEr4
+
+
 ### 상품조회 ~ 카트
+{% include 파일명.html id="https://www.youtube.com/watch?v=7Ce096QCC00" %}  
+
+
 [![Video Label](http://img.youtube.com/vi/7Ce096QCC00/0.jpg)](https://youtu.be/7Ce096QCC00)
 
 
