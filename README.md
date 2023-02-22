@@ -75,3 +75,5 @@ https://user-images.githubusercontent.com/121285584/220594899-7bdaa98f-8bec-41f7
 `ㅇㅇㅇㅇㅇㅇㅇㅇㅇ`
 
 ### 관리자페이지 > 상품재고, 판매현황 조회
+
+https://drive.google.com/file/d/1dIN2iyfy8ImenvGojTlafKi6ahfdEQXH/view?usp=share_link
