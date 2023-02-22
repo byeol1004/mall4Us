@@ -1,9 +1,9 @@
-# Mall4Us 
+# 👗Mall4Us 
 우리들을 위한 쇼핑몰
 
 -별, 한묵, 경숙, 지훈
 
-## 프로젝트 소개
+## 🖥️프로젝트 소개
 마뗑킴 브랜드 자사몰과, 29CM 편집샵 등 의류 쇼핑몰을 참고하여 만든 사이트입니다.
 
 
@@ -23,10 +23,10 @@
 
 
 
-### 개발기간
+### 🕰️개발기간
 - 2022.12.26 ~ 2023.2.3 (6주)
 
-### 개발환경
+### ⚙️개발환경
 - Language : Java, HTML, CSS, JacaScript
 - Server : Apache Tomcat 9.0
 - FrameWork, Library : Spring, Mybatis, JQuery, Lombok
@@ -35,9 +35,15 @@
 - IDE : STS(Sprinf Tool Suite)
 
 
-## Table Modeling
+## ✏️Table Modeling
 ![그림1](https://user-images.githubusercontent.com/121285584/220585585-35f6e546-9f97-4d86-8b9c-3467deefbd7f.png)
 
+## ✏️Controller + View
+![그림2](https://user-images.githubusercontent.com/121285584/220586394-6f0e6751-37e0-41dc-9393-bd3beaacad92.png)
 
-## 주요기능
+
+
+
+
+## 📌주요기능
 요로롤
