@@ -53,7 +53,9 @@
 
 ## 📄구현페이지
 ### 메인페이지(회원가입, 로그인)
-https://user-images.githubusercontent.com/121285584/220628423-17fddbe1-2076-456d-8da6-dc08d8e62876.mp4
+https://user-images.githubusercontent.com/121285584/220640622-d77cc964-a5df-4514-bece-b0443ae84984.mp4
+
+
 
 `ㅇㅇㅇㅇㅇㅇㅇㅇㅇ`
 
