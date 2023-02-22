@@ -53,12 +53,12 @@
 
 ## 📄구현페이지
 ### 메인페이지(회원가입, 로그인)
-[![Video Label](http://img.youtube.com/vi/WO6l6t6wEr4/1.jpg)](https://youtu.be/WO6l6t6wEr4)
+{% include NewFile.html id="WO6l6t6wEr4&t=2s" %}
+
 
 
 
 ### 상품조회 ~ 카트
-{% include 파일명.html id="https://www.youtube.com/watch?v=7Ce096QCC00" %}  
 
 
 [![Video Label](http://img.youtube.com/vi/7Ce096QCC00/0.jpg)](https://youtu.be/7Ce096QCC00)
