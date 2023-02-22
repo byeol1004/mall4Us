@@ -36,6 +36,7 @@
 
 
 ## Table Modeling
+![그림1](https://user-images.githubusercontent.com/121285584/220585585-35f6e546-9f97-4d86-8b9c-3467deefbd7f.png)
 
 
 ## 주요기능
