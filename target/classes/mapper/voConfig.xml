@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+	<typeAliases>
+		<typeAlias type="kr.co.mall4Us.vo.MemberVO" alias="MemberVO"/>
+		<typeAlias type="kr.co.mall4Us.vo.CartVO" alias="CartVO"/>
+		<typeAlias type="kr.co.mall4Us.vo.ProductsVO" alias="ProductsVO"/>
+		<typeAlias type="kr.co.mall4Us.vo.InventoryVO" alias="InventoryVO"/>
+		<typeAlias type="kr.co.mall4Us.vo.ReviewVO" alias="ReviewVO"/>
+		<typeAlias type="kr.co.mall4Us.vo.CouponVO" alias="CouponVO"/>
+	</typeAliases>
+</configuration>
