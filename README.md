@@ -83,7 +83,7 @@ https://user-images.githubusercontent.com/121285584/220593408-8a2fa6e4-4f50-4212
 
 #### 구현기능
 ```
-*배송정보, 쿠폰, 포인트 적용하여 결제반영
+*배송정보, 쿠폰, 포인트 적용하여 결제
 *I'mPort API 사용하여 결제 구현
 *결제 완료 후 주문내역 조회
 ```
@@ -105,7 +105,9 @@ https://user-images.githubusercontent.com/121285584/220594274-92d13e6b-6091-4997
 https://user-images.githubusercontent.com/121285584/220594899-7bdaa98f-8bec-41f7-8bce-4e41f8cbfc9d.mp4
 
 #### 구현기능
-`*관리자페이지에서 상품등록`
+```
+*관리자페이지에서 상품등록
+```
 
 
 ### 관리자페이지 > 상품재고, 판매현황 조회
