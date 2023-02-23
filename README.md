@@ -57,40 +57,42 @@ https://user-images.githubusercontent.com/121285584/220640622-d77cc964-a5df-4514
 
 
 
-`ㅇㅇㅇㅇㅇㅇㅇㅇㅇ`
-
+#### 구현기능
+```*로그인
+*회원가입
+*슬라이드 배너 적용 *하단 이미지 클릭하여 대분류 카테고리로 이동 ```
 
 ### 상품조회 ~ 카트
 
 https://user-images.githubusercontent.com/121285584/220630037-b42c8051-b368-402e-808f-038d45f7ab01.mp4
 
-`ㅇㅇㅇㅇㅇㅇㅇㅇㅇ`
+
 
 
 ### 결제
 
 https://user-images.githubusercontent.com/121285584/220593408-8a2fa6e4-4f50-4212-9b7d-fee63ce20ad5.mp4
 
-`ㅇㅇㅇㅇㅇㅇㅇㅇㅇ`
+
 
 ### 마이페이지 ~ 리뷰작성
 
 https://user-images.githubusercontent.com/121285584/220594274-92d13e6b-6091-4997-86da-3a86a3a58d06.mp4
 
-`ㅇㅇㅇㅇㅇㅇㅇㅇㅇ`
+
 
 ### 관리자페이지 > 상품등록
 
 https://user-images.githubusercontent.com/121285584/220594899-7bdaa98f-8bec-41f7-8bce-4e41f8cbfc9d.mp4
 
-`ㅇㅇㅇㅇㅇㅇㅇㅇㅇ`
+
 
 ### 관리자페이지 > 상품재고, 판매현황 조회
 
 
 https://user-images.githubusercontent.com/121285584/220633136-bcc032c9-ab31-4275-9aea-6ed12d0179ae.mp4
 
-`ㅇㅇㅇㅇㅇㅇㅇㅇㅇ`
+
 
 ## 느낀점 & 보완하고 싶은 부분
 저희가 처음 팀프로젝트를 진행할 때 막막하고 잘할 수 있을까 걱정이 많이 되었는데, 프로젝트가 완성된 지금은 미흡하더라도 저희가 목표한 개인의 역량 성장과 팀원들간의 협업에 대해 배울 수 있는 계기가 되었습니다.
