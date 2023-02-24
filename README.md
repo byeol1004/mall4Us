@@ -32,7 +32,7 @@
 - FrameWork, Library : Spring, Mybatis, JQuery, Lombok
 - DBMS : Oracle
 - API : I'mPort
-- IDE : STS(Sprinf Tool Suite)
+- IDE : STS(Sprin Tool Suite)
 
 
 ## ✏️Table Modeling
