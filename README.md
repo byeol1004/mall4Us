@@ -39,7 +39,8 @@
 ![그림2](https://user-images.githubusercontent.com/121285584/220586394-6f0e6751-37e0-41dc-9393-bd3beaacad92.png)
 
 ## ✏️Usecase Diagram
-![image](https://user-images.githubusercontent.com/121285584/221454493-31481383-c208-4d25-a77c-ec22bfe3e809.png)
+![Usecase Diagram](https://user-images.githubusercontent.com/121285584/221454632-cf08fd8f-4d07-4d90-b4f2-f2c486b79b03.jpg)
+ng)
 
 
 ## 📌주요기능
