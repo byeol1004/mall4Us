@@ -40,7 +40,6 @@
 
 ## ✏️Usecase Diagram
 ![Usecase Diagram](https://user-images.githubusercontent.com/121285584/221454632-cf08fd8f-4d07-4d90-b4f2-f2c486b79b03.jpg)
-ng)
 
 
 ## 📌주요기능
